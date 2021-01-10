@@ -1,7 +1,16 @@
 package com.sda.coursemanager.config;
 
-import com.sda.coursemanager.model.*;
-import com.sda.coursemanager.repository.*;
+import com.sda.coursemanager.course.CourseEnrollmentRepository;
+import com.sda.coursemanager.course.CourseRepository;
+import com.sda.coursemanager.course.model.Course;
+import com.sda.coursemanager.course.model.CourseEnrollment;
+import com.sda.coursemanager.lesson.LessonBlockRepository;
+import com.sda.coursemanager.lesson.LessonRepository;
+import com.sda.coursemanager.lesson.model.Lesson;
+import com.sda.coursemanager.lesson.model.LessonBlock;
+import com.sda.coursemanager.user.UserRepository;
+import com.sda.coursemanager.user.model.Role;
+import com.sda.coursemanager.user.model.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

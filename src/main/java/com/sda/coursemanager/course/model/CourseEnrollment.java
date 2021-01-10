@@ -1,4 +1,6 @@
-package com.sda.coursemanager.model;
+package com.sda.coursemanager.course.model;
+
+import com.sda.coursemanager.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;

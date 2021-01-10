@@ -1,4 +1,4 @@
-package com.sda.coursemanager.model;
+package com.sda.coursemanager.user.model;
 
 public enum Role {
     ADMIN, TEACHER, PARTICIPANT

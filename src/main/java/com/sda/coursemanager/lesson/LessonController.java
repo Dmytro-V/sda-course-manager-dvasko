@@ -1,4 +1,4 @@
-package com.sda.coursemanager.controller;
+package com.sda.coursemanager.lesson;
 
 import org.springframework.stereotype.Controller;
 
