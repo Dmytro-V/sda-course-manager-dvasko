@@ -1,4 +1,4 @@
-package com.sda.coursemanager.exception;
+package com.sda.coursemanager.config;
 
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;

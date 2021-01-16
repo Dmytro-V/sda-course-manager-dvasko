@@ -5,7 +5,7 @@ import com.sda.coursemanager.course.model.CourseEnrollment;
 import com.sda.coursemanager.course.model.dto.CourseDetailsDto;
 import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
-import com.sda.coursemanager.lesson.LessonBlockMapper;
+import com.sda.coursemanager.lesson.LessonMapper;
 import com.sda.coursemanager.user.UserMapper;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public class CourseMapper {
         courseDetailsDto.setId(course.getId());
         courseDetailsDto.setName(course.getName());
 
-        courseDetailsDto.setLessonBlockDtos(LessonBlockMapper.mapLessonBlocksToDtoList(course.getLessonBlocks()));
+        courseDetailsDto.setLessonBlockDtos(LessonMapper.mapLessonBlocksToDtoList(course.getLessonBlocks()));
 
         return courseDetailsDto;
     }

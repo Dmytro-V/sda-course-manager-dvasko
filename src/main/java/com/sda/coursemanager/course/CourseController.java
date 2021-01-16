@@ -7,6 +7,7 @@ import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
 import com.sda.coursemanager.user.UserRepository;
 import com.sda.coursemanager.user.model.User;
+import com.sda.coursemanager.user.model.dto.UserDto;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CourseController {
 
     private final CourseRepository courseRepository;
@@ -38,11 +40,13 @@ public class CourseController {
         return CourseMapper.mapCourseToDetailsDto(course);
     }
 
-    @PostMapping("/courses/{course-id}/enrollment/{user-id}")
-    public CourseEnrollmentDto setCourseEnrollment(@PathVariable("course-id") Long id, @PathVariable("user-id") Long userId) throws NotFoundException {
-        Course course = courseRepository.findById(id)
+    @PostMapping("/courses/{course-id}/courseEnrollment")
+    public CourseEnrollmentDto setCourseEnrollment(@PathVariable("course-id") Long courseId,
+                                                   @RequestBody UserDto userDto) throws NotFoundException {
+        Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new NotFoundException("course not found"));
-        User user = userRepository.findById(id)
+
+        User user = userRepository.findById(userDto.getId())
                 .orElseThrow(() -> new NotFoundException("user not found"));
 
         CourseEnrollment enrollment = new CourseEnrollment();

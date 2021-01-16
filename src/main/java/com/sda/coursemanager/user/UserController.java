@@ -5,7 +5,10 @@ import com.sda.coursemanager.user.model.dto.UserDto;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -20,4 +23,10 @@ public class UserController {
                 .orElseThrow(() -> new NotFoundException("user not found"));
         return UserMapper.mapUserToUserDto(user);
     }
+
+    @GetMapping("/users/")
+    public List<UserDto> getAllUsers() {
+        return UserMapper.mapUsersToUserDtoList(userRepository.findAll());
+    }
+
 }
