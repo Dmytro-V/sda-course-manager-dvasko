@@ -5,10 +5,7 @@ import com.sda.coursemanager.lesson.model.dto.LessonBlockDto;
 import com.sda.coursemanager.user.UserRepository;
 import com.sda.coursemanager.user.model.User;
 import javassist.NotFoundException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
