@@ -1,6 +1,7 @@
 package com.sda.coursemanager.user;
 
 import com.sda.coursemanager.user.model.User;
+import com.sda.coursemanager.user.model.dto.UserDetailsDto;
 import com.sda.coursemanager.user.model.dto.UserDto;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,10 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public UserDto getUser(@PathVariable Long id) throws NotFoundException {
+    public UserDetailsDto getUser(@PathVariable Long id) throws NotFoundException {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("user not found"));
-        return UserMapper.mapUserToUserDto(user);
+        return UserMapper.mapUserToUserDetailsDto(user);
     }
 
     @GetMapping("/users/")

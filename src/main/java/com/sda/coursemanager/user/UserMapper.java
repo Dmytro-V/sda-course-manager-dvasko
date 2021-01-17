@@ -4,6 +4,7 @@ import com.sda.coursemanager.course.CourseMapper;
 import com.sda.coursemanager.course.model.Course;
 import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.user.model.User;
+import com.sda.coursemanager.user.model.dto.UserDetailsDto;
 import com.sda.coursemanager.user.model.dto.UserDto;
 
 import java.util.List;
@@ -27,5 +28,18 @@ public class UserMapper {
         return users.stream()
                 .map(UserMapper::mapUserToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    public static UserDetailsDto mapUserToUserDetailsDto(User user) {
+
+        UserDetailsDto userDetailsDto = new UserDetailsDto();
+        userDetailsDto.setId(user.getId());
+        userDetailsDto.setLogin(user.getLogin());
+        userDetailsDto.setType(user.getType());
+        userDetailsDto.setFirstName(user.getFirstName());
+        userDetailsDto.setLastName(user.getLastName());
+        userDetailsDto.setActive(user.isActive());
+
+        return userDetailsDto;
     }
 }

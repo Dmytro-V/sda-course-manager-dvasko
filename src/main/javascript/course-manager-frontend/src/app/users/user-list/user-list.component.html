@@ -6,14 +6,16 @@
         <th scope="col">#</th>
         <th scope="col">type</th>
         <th scope="col">username</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
-        <td>{{ user.type }}</td>
-        <td>{{ user.username }}</td>
-      </tr>
+        <tr *ngFor="let user of users">
+          <td >{{ user.id }}</td>
+          <td>{{ user.type }}</td>
+          <td>{{ user.username }}</td>
+          <a routerLink="/users/{{user.id}}" class="btn btn-info">details</a>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import {BrowserModule} from "@angular/platform-browser";
 import {UserService} from "./users/user-service.service";
+import { UserComponent } from './users/user/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
