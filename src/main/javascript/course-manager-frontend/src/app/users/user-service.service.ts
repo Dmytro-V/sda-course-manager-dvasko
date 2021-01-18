@@ -18,7 +18,7 @@ export class UserService {
   }
 
 
-  findById(id: number) {
+  findById(id: number): Observable<UserDetails>{
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 

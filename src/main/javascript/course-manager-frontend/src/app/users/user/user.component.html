@@ -1,7 +1,7 @@
 <div class="card my-5">
   <div class="card-body">
     <h2>User</h2>
-    <ul>
+    <ul *ngIf="user">
       <li>user id: {{user.id}}</li>
       <li>user login: {{user.login}}</li>
       <li>user type: {{user.type}}</li>

@@ -19,7 +19,7 @@ export class CourseService {
     return this.http.get<Course[]>('/api/courses/', {headers: headers});
   }
 
-  findById(id: number) {
+  findById(id: number): Observable<CourseDetails>{
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 

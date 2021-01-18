@@ -9,6 +9,7 @@ import {UserService} from "./users/user-service.service";
 import { UserComponent } from './users/user/user.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { CourseComponent } from './courses/course/course.component';
+import { AssignTeacherFormComponent } from './courses/assign-teacher-form/assign-teacher-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CourseComponent } from './courses/course/course.component';
     UserListComponent,
     UserComponent,
     CoursesListComponent,
-    CourseComponent
+    CourseComponent,
+    AssignTeacherFormComponent
   ],
   imports: [
     BrowserModule,

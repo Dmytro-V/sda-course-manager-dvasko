@@ -1,0 +1,10 @@
+<p>assign-teacher:</p>
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+      <label for="teacherId">Teacher ID: </label>
+      <input id="teacherId" name="teacherId" type="number" [(ngModel)]="teacherId">
+      <button type="submit" class="btn btn-info">Assign</button>
+    </form>
+  </div>
+</div>

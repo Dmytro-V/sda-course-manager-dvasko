@@ -40,7 +40,7 @@ public class CourseController {
         return CourseMapper.mapCourseToDetailsDto(course);
     }
 
-    @PostMapping("/courses/{course-id}/courseEnrollment")
+    @PostMapping("/courses/{course-id}/courseEnrollments")
     public CourseEnrollmentDto setCourseEnrollment(@PathVariable("course-id") Long courseId,
                                                    @RequestBody UserDto userDto) throws NotFoundException {
         Course course = courseRepository.findById(courseId)

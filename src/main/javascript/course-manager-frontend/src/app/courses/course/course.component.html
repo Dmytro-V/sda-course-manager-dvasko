@@ -1,9 +1,44 @@
 <div class="card my-5">
-  <div class="card-body">
-    <h2>Course</h2>
-    <ul>
-      <li>course id: {{course.id}}</li>
-      <li>course name: {{course.name}}</li>
-    </ul>
+  <div class="card-body" *ngIf="course">
+    <h2 >course {{course.name}}:</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">lessonBlock</th>
+        <th scope="col">teacher</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let block of course.lessonBlockDtos">
+
+        <td >{{ block.id }}</td>
+
+        <td >{{ block.subject }}</td>
+
+        <td *ngIf="block.teacherId" >
+          id:{{block.teacherId}} -
+          <a routerLink="/users/{{block.teacherId}}">
+            {{block.teacherName}}
+          </a>
+        </td>
+
+        <td *ngIf="!block.teacherId" >
+          <a routerLink="/courses/assign-teacher" [queryParams]="{lessonBlockId:block.id}">
+            no teacher
+          </a>
+        </td>
+
+        <td>
+          <ul>
+            <li *ngFor="let lesson of block.lessons">
+              <p>{{lesson.subject}} {{lesson.date}}</p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -1,7 +1,7 @@
-import {LessonBlock} from "./lesson-block";
+import {LessonBlock} from "../lessons/lesson-block";
 
 export class CourseDetails {
   id: string;
   name: string;
-  lessonBlock: LessonBlock[];
+  lessonBlockDtos: LessonBlock[];
 }
