@@ -1,0 +1,11 @@
+<p>course-enrollment</p>
+<p>Course id: {{courseId}}</p>
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+      <label for="participantId">Participant ID: </label>
+      <input id="participantId" name="participantId" type="number" [(ngModel)]="participantId">
+      <button type="submit" class="btn btn-info">Assign</button>
+    </form>
+  </div>
+</div>

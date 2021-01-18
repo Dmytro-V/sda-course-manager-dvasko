@@ -8,6 +8,7 @@
         <th scope="col">name</th>
         <th scope="col">length</th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -15,7 +16,14 @@
         <td >{{ course.id }}</td>
         <td >{{ course.name }}</td>
         <td >{{ course.courseLength }}</td>
+        <td>
         <a routerLink="/courses/{{course.id}}" class="btn btn-info">details</a>
+        </td>
+        <td>
+          <a routerLink="/enrollments/assign-participant" [queryParams]="{courseId:course.id}"
+             class="btn btn-info">enrol</a>
+
+        </td>
       </tr>
       </tbody>
     </table>

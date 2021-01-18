@@ -10,6 +10,7 @@ import { UserComponent } from './users/user/user.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { CourseComponent } from './courses/course/course.component';
 import { AssignTeacherFormComponent } from './courses/assign-teacher-form/assign-teacher-form.component';
+import { CourseEnrollmentFormComponent } from './courses/course-enrollment-form/course-enrollment-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AssignTeacherFormComponent } from './courses/assign-teacher-form/assign
     UserComponent,
     CoursesListComponent,
     CourseComponent,
-    AssignTeacherFormComponent
+    AssignTeacherFormComponent,
+    CourseEnrollmentFormComponent
   ],
   imports: [
     BrowserModule,

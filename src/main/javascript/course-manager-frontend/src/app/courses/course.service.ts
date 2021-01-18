@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Course} from "./course";
 import {CourseDetails} from "./course-details";
+import {LessonBlock} from "../lessons/lesson-block";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class CourseService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<CourseDetails>('/api/courses/' + id, {headers: headers});
+    return this.http.get<CourseDetails>('/api/courses/' + id + '/details', {headers: headers});
+  }
+
+  assignParticipant(courseId: number, participantId: number) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
+
+    this.http.get("/api/courses/" + courseId, {headers: headers}).subscribe((course: Course) => {
+      let body = {subject:course.name, participantId: participantId};
+      this.http.post('/api/courses/' + courseId + '/enrollments', body, {headers: headers}).subscribe();
+    });
   }
 }

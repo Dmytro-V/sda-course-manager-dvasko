@@ -5,9 +5,9 @@ import com.sda.coursemanager.course.model.CourseEnrollment;
 import com.sda.coursemanager.course.model.dto.CourseDetailsDto;
 import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
+import com.sda.coursemanager.course.model.dto.EnrollmentsForm;
 import com.sda.coursemanager.user.UserRepository;
 import com.sda.coursemanager.user.model.User;
-import com.sda.coursemanager.user.model.dto.UserDto;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,19 +34,26 @@ public class CourseController {
     }
 
     @GetMapping("/courses/{id}")
-    public CourseDetailsDto getSingleCourseDto(@PathVariable Long id) throws NotFoundException {
+    public CourseDto getSingleCourseDto(@PathVariable Long id) throws NotFoundException {
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("course not found"));
+        return CourseMapper.mapCourseToDto(course);
+    }
+
+    @GetMapping("/courses/{id}/details")
+    public CourseDetailsDto getSingleCourseDetailsDto(@PathVariable Long id) throws NotFoundException {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("course not found"));
         return CourseMapper.mapCourseToDetailsDto(course);
     }
 
-    @PostMapping("/courses/{course-id}/courseEnrollments")
+    @PostMapping("/courses/{course-id}/enrollments")
     public CourseEnrollmentDto setCourseEnrollment(@PathVariable("course-id") Long courseId,
-                                                   @RequestBody UserDto userDto) throws NotFoundException {
+                                                   @RequestBody EnrollmentsForm enrollmentsForm) throws NotFoundException {
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new NotFoundException("course not found"));
 
-        User user = userRepository.findById(userDto.getId())
+        User user = userRepository.findById(enrollmentsForm.getParticipantId())
                 .orElseThrow(() -> new NotFoundException("user not found"));
 
         CourseEnrollment enrollment = new CourseEnrollment();
