@@ -1,10 +1,18 @@
 <p>assign-teacher:</p>
 <p>Lesson block: {{lessonBlockId}}</p>
+<p>Teacher Id: {{teacherId}}</p>
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()">
-      <label for="teacherId">Teacher ID: </label>
-      <input id="teacherId" name="teacherId" type="number" [(ngModel)]="teacherId">
+      <label for="teacherId">select teacher: </label>
+      <select id="teacherId"
+              [ngModel]="teacherId"
+              name="teacherId"
+              (ngModelChange)="onChange($event)">
+        <option [value]="user.id" *ngFor="let user of users">
+          {{user.username}}
+        </option>
+      </select>
       <button type="submit" class="btn btn-info">Assign</button>
     </form>
   </div>

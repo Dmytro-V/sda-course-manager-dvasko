@@ -1,10 +1,18 @@
 <p>course-enrollment</p>
 <p>Course id: {{courseId}}</p>
+<p>id: {{participantId}}</p>
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()">
-      <label for="participantId">Participant ID: </label>
-      <input id="participantId" name="participantId" type="number" [(ngModel)]="participantId">
+      <label for="participantId">select participant: </label>
+      <select id="participantId"
+              [ngModel]="participantId"
+              name="participantId"
+              (ngModelChange)="onChange($event)">
+        <option [value]="user.id" *ngFor="let user of users">
+          {{user.username}}
+        </option>
+      </select>
       <button type="submit" class="btn btn-info">Assign</button>
     </form>
   </div>
