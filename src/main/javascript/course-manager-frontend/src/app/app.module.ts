@@ -11,6 +11,7 @@ import { CoursesListComponent } from './courses/courses-list/courses-list.compon
 import { CourseComponent } from './courses/course/course.component';
 import { AssignTeacherFormComponent } from './courses/assign-teacher-form/assign-teacher-form.component';
 import { CourseEnrollmentFormComponent } from './courses/course-enrollment-form/course-enrollment-form.component';
+import { EnrollmentsListComponent } from './course-enrollments/enrollments-list/enrollments-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CourseEnrollmentFormComponent } from './courses/course-enrollment-form/
     CoursesListComponent,
     CourseComponent,
     AssignTeacherFormComponent,
-    CourseEnrollmentFormComponent
+    CourseEnrollmentFormComponent,
+    EnrollmentsListComponent
   ],
   imports: [
     BrowserModule,

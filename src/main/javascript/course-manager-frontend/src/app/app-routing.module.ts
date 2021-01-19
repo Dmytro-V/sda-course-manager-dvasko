@@ -6,6 +6,7 @@ import {CoursesListComponent} from "./courses/courses-list/courses-list.componen
 import {CourseComponent} from "./courses/course/course.component";
 import {AssignTeacherFormComponent} from "./courses/assign-teacher-form/assign-teacher-form.component";
 import {CourseEnrollmentFormComponent} from "./courses/course-enrollment-form/course-enrollment-form.component";
+import {EnrollmentsListComponent} from "./course-enrollments/enrollments-list/enrollments-list.component";
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesListComponent},
   { path: 'courses/assign-teacher', component: AssignTeacherFormComponent},
   { path: 'courses/:id', component: CourseComponent},
+  { path: 'enrollments', component: EnrollmentsListComponent},
   { path: 'enrollments/assign-participant', component: CourseEnrollmentFormComponent}
 ];
 

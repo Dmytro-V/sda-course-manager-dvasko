@@ -1,0 +1,27 @@
+<div class="card my-5">
+  <div class="card-body">
+    <h2>Enrollments:</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">date</th>
+        <th scope="col">participant id</th>
+        <th scope="col">participant name</th>
+        <th scope="col">course id</th>
+        <th scope="col">course name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let enrollment of enrollments">
+        <td >{{ enrollment.id }}</td>
+        <td >{{ enrollment.date }}</td>
+        <td >{{ enrollment.participant.id }}</td>
+        <td >{{ enrollment.participant.username }}</td>
+        <td >{{ enrollment.course.id }}</td>
+        <td >{{ enrollment.course.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
