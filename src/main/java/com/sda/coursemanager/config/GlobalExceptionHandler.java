@@ -14,4 +14,10 @@ public class GlobalExceptionHandler {
     public String handException(NotFoundException exception) {
         return "got an 404 error with: " + exception.getMessage();
     }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(ManagerException.class)
+    public String handException(ManagerException exception) {
+        return "got an 404 error with: " + exception.getMessage();
+    }
 }

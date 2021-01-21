@@ -1,5 +1,6 @@
 package com.sda.coursemanager.course;
 
+import com.sda.coursemanager.config.ManagerException;
 import com.sda.coursemanager.course.model.Course;
 import com.sda.coursemanager.course.model.CourseEnrollment;
 import com.sda.coursemanager.course.model.dto.CourseDetailsDto;
@@ -7,6 +8,7 @@ import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
 import com.sda.coursemanager.course.model.dto.EnrollmentsForm;
 import com.sda.coursemanager.user.UserRepository;
+import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +57,10 @@ public class CourseController {
 
         User user = userRepository.findById(enrollmentsForm.getParticipantId())
                 .orElseThrow(() -> new NotFoundException("user not found"));
+
+        if (user.getType() != Role.PARTICIPANT) {
+            throw new ManagerException("this is not a participant");
+        }
 
         CourseEnrollment enrollment = new CourseEnrollment();
         enrollment.setDate(LocalDate.now());
