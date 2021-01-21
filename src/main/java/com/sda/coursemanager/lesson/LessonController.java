@@ -1,9 +1,11 @@
 package com.sda.coursemanager.lesson;
 
+import com.sda.coursemanager.config.ManagerException;
 import com.sda.coursemanager.lesson.model.LessonBlock;
 import com.sda.coursemanager.lesson.model.dto.LessonBlockDto;
 import com.sda.coursemanager.lesson.model.dto.LessonBlockUpdateForm;
 import com.sda.coursemanager.user.UserRepository;
+import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;
 import javassist.NotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +39,10 @@ public class LessonController {
 
         User teacher = userRepository.findById(lessonBlockUpdateForm.getTeacherId())
                 .orElseThrow(() -> new NotFoundException("teacher not found"));
+
+        if (teacher.getType() != Role.TEACHER) {
+            throw new ManagerException("this is not a teacher");
+        }
 
         lessonBlock.setTeacher(teacher);
         LessonBlock updatedLessonBlock = lessonBlockRepository.save(lessonBlock);
