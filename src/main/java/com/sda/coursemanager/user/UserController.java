@@ -1,5 +1,6 @@
 package com.sda.coursemanager.user;
 
+import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;
 import com.sda.coursemanager.user.model.dto.UserDetailsDto;
 import com.sda.coursemanager.user.model.dto.UserDto;
@@ -28,6 +29,16 @@ public class UserController {
     @GetMapping("/users/")
     public List<UserDto> getAllUsers() {
         return UserMapper.mapUsersToUserDtoList(userRepository.findAll());
+    }
+
+    @GetMapping("/teachers/")
+    public List<UserDto> getAllTeachers() {
+        return UserMapper.mapUsersToUserDtoList(userRepository.findByType(Role.TEACHER));
+    }
+
+    @GetMapping("/participants/")
+    public List<UserDto> getAllParticipants() {
+        return UserMapper.mapUsersToUserDtoList(userRepository.findByType(Role.PARTICIPANT));
     }
 
 }

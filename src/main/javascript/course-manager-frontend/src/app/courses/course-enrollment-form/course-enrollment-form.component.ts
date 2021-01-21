@@ -13,7 +13,7 @@ export class CourseEnrollmentFormComponent implements OnInit {
 
   courseId: number;
   participantId: number;
-  users: User[];
+  participants: User[];
 
 
   constructor(private route:ActivatedRoute,
@@ -22,8 +22,8 @@ export class CourseEnrollmentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseId = this.route.snapshot.queryParams['courseId'];
-    this.userService.findAll().subscribe(data => {
-      this.users = data;
+    this.userService.findAllParticipants().subscribe(data => {
+      this.participants = data;
     });
   }
 

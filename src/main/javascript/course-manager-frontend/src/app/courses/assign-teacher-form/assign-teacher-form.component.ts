@@ -13,7 +13,7 @@ export class AssignTeacherFormComponent implements OnInit {
 
   teacherId: number;
   lessonBlockId: number;
-  users: User[];
+  teachers: User[];
 
   constructor(private route: ActivatedRoute,
               private lessonService: LessonService,
@@ -21,8 +21,8 @@ export class AssignTeacherFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.lessonBlockId = this.route.snapshot.queryParams['lessonBlockId'];
-    this.userService.findAll().subscribe(data => {
-      this.users = data;
+    this.userService.findAllTeachers().subscribe(data => {
+      this.teachers = data;
     });
   }
 

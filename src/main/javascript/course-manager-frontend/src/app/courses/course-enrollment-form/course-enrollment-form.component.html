@@ -9,8 +9,8 @@
               [ngModel]="participantId"
               name="participantId"
               (ngModelChange)="onChange($event)">
-        <option [value]="user.id" *ngFor="let user of users">
-          {{user.username}}
+        <option [value]="participant.id" *ngFor="let participant of participants">
+          {{participant.username}}
         </option>
       </select>
       <button type="submit" class="btn btn-info">Assign</button>
