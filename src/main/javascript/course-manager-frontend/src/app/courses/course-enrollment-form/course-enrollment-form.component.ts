@@ -27,10 +27,6 @@ export class CourseEnrollmentFormComponent implements OnInit {
     });
   }
 
-  onChange(newValue: number) {
-    this.participantId = newValue;
-  }
-
   onSubmit() {
     this.courseService.assignParticipant(this.courseId, this.participantId);
   }

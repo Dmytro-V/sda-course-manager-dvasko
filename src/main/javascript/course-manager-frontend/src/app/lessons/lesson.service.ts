@@ -14,7 +14,7 @@ export class LessonService {
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
     this.http.get("/api/lesson-blocks/" + lessonBlockId, {headers: headers}).subscribe((block: LessonBlock) => {
-      let body = {subject:block.subject, teacherId:teacherId};
+      let body = {subject:block.subject, teacherId: teacherId};
       this.http.put('/api/lesson-blocks/' + lessonBlockId, body, {headers: headers}).subscribe();
     });
   }

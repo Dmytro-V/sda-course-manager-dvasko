@@ -6,6 +6,7 @@ import com.sda.coursemanager.course.model.dto.CourseDetailsDto;
 import com.sda.coursemanager.course.model.dto.CourseDto;
 import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
 import com.sda.coursemanager.course.model.dto.EnrollmentsForm;
+import com.sda.coursemanager.exceptions.EnrollmentCreateException;
 import com.sda.coursemanager.exceptions.NotFoundException;
 import com.sda.coursemanager.exceptions.WrongUserTypeException;
 import com.sda.coursemanager.user.UserRepository;
@@ -13,6 +14,7 @@ import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -49,10 +51,16 @@ public class CourseController {
         return CourseMapper.mapCourseToDetailsDto(course);
     }
 
-    @PostMapping("/courses/{course-id}/enrollments")
-    public CourseEnrollmentDto setCourseEnrollment(@PathVariable("course-id") Long courseId,
-                                                   @RequestBody EnrollmentsForm enrollmentsForm) throws NotFoundException, WrongUserTypeException {
-        Course course = courseRepository.findById(courseId)
+    @GetMapping("/enrollments/")
+    public List<CourseEnrollmentDto> getEnrollments() {
+        return CourseMapper.mapEnrollmentsToEnrollmentDtoList(courseEnrollmentRepository.findAll());
+    }
+
+    @PostMapping("/enrollments/")
+    public CourseEnrollmentDto setCourseEnrollment(@Valid @RequestBody EnrollmentsForm enrollmentsForm)
+            throws NotFoundException, WrongUserTypeException, EnrollmentCreateException {
+
+        Course course = courseRepository.findById(enrollmentsForm.getCourseId())
                 .orElseThrow(() -> new NotFoundException("course not found"));
 
         User user = userRepository.findById(enrollmentsForm.getParticipantId())
@@ -62,6 +70,10 @@ public class CourseController {
             throw new WrongUserTypeException("this is not a participant");
         }
 
+        if (courseEnrollmentRepository.findByParticipantAndCourse(user, course).isPresent()) {
+            throw new EnrollmentCreateException("enrollment already exist");
+        }
+
         CourseEnrollment enrollment = new CourseEnrollment();
         enrollment.setDate(LocalDate.now());
         enrollment.setParticipant(user);
@@ -69,11 +81,5 @@ public class CourseController {
         CourseEnrollment courseEnrollment = courseEnrollmentRepository.save(enrollment);
 
         return CourseMapper.mapEnrollmentToEnrollmentDto(courseEnrollment);
-    }
-
-    @GetMapping("/enrollments/")
-    public List<CourseEnrollmentDto> getEnrollments() {
-        return CourseMapper.mapEnrollmentsToEnrollmentDtoList(courseEnrollmentRepository.findAll());
-
     }
 }

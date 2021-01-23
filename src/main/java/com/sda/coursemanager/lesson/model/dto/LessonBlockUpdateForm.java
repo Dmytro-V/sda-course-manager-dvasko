@@ -1,11 +1,9 @@
 package com.sda.coursemanager.lesson.model.dto;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class LessonBlockUpdateForm {
     @NotNull
-    @NotEmpty
     private String subject;
     @NotNull
     private long teacherId;

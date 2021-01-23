@@ -1,5 +1,6 @@
 package com.sda.coursemanager.config;
 
+import com.sda.coursemanager.exceptions.EnrollmentCreateException;
 import com.sda.coursemanager.exceptions.NotFoundException;
 import com.sda.coursemanager.exceptions.WrongUserTypeException;
 import org.springframework.http.HttpStatus;
@@ -29,4 +30,9 @@ public class GlobalExceptionHandler {
         return "wrong object";
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EnrollmentCreateException.class)
+    public String handException(EnrollmentCreateException exception) {
+        return "enrollment error: " + exception.getMessage();
+    }
 }

@@ -46,7 +46,7 @@ public class DbInitilizer implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        flushDatabase();
+//        flushDatabase();
         if (userRepository.count() == 0) {
             User participant = initUser("single_user", "pass", Role.PARTICIPANT);
 

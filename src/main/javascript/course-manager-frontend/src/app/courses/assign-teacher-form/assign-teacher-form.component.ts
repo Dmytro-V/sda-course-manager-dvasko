@@ -26,10 +26,6 @@ export class AssignTeacherFormComponent implements OnInit {
     });
   }
 
-  onChange(newValue: number) {
-    this.teacherId = newValue;
-  }
-
   onSubmit() {
     this.lessonService.assignTeacher(this.teacherId, this.lessonBlockId);
   }

@@ -6,9 +6,8 @@
     <form (ngSubmit)="onSubmit()">
       <label for="participantId">select participant: </label>
       <select id="participantId"
-              [ngModel]="participantId"
-              name="participantId"
-              (ngModelChange)="onChange($event)">
+              [(ngModel)]="participantId"
+              name="participantId">
         <option [value]="participant.id" *ngFor="let participant of participants">
           {{participant.username}}
         </option>

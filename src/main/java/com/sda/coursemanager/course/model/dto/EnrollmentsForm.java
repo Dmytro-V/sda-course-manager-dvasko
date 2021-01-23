@@ -1,22 +1,26 @@
 package com.sda.coursemanager.course.model.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class EnrollmentsForm {
-    private String subject;
-    private long participantId;
+    @NotNull
+    private Long courseId;
+    @NotNull
+    private Long participantId;
 
-    public String getSubject() {
-        return subject;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 
-    public long getParticipantId() {
+    public Long getParticipantId() {
         return participantId;
     }
 
-    public void setParticipantId(long participantId) {
+    public void setParticipantId(Long participantId) {
         this.participantId = participantId;
     }
 }
