@@ -29,13 +29,13 @@ export class UserService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<User[]>('/api/teachers/', {headers: headers});
+    return this.http.get<User[]>('/api/users/'+'?type=TEACHER', {headers: headers});
   }
 
   findAllParticipants(): Observable<User[]> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<User[]>('/api/participants/', {headers: headers});
+    return this.http.get<User[]>('/api/users/'+'?type=PARTICIPANT', {headers: headers});
   }
 }

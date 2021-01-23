@@ -31,14 +31,10 @@ public class UserController {
         return UserMapper.mapUsersToUserDtoList(userRepository.findAll());
     }
 
-    @GetMapping("/teachers/")
-    public List<UserDto> getAllTeachers() {
-        return UserMapper.mapUsersToUserDtoList(userRepository.findByType(Role.TEACHER));
-    }
-
-    @GetMapping("/participants/")
-    public List<UserDto> getAllParticipants() {
-        return UserMapper.mapUsersToUserDtoList(userRepository.findByType(Role.PARTICIPANT));
+    @GetMapping(value="/users/", params="type")
+    public List<UserDto> getAllTeachers(@RequestParam("type") String type) {
+        Role role = Role.valueOf(type);
+        return UserMapper.mapUsersToUserDtoList(userRepository.findByType(role));
     }
 
 }
