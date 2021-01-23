@@ -11,3 +11,5 @@ public class HelloWorldController {
         return "Hello World";
     }
 }
+
+// od Mateusz, mam nadzieje ze nic nie popsulem ;)
