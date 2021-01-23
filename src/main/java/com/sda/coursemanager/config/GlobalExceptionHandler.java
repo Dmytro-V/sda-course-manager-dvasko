@@ -1,6 +1,7 @@
 package com.sda.coursemanager.config;
 
-import javassist.NotFoundException;
+import com.sda.coursemanager.exceptions.NotFoundException;
+import com.sda.coursemanager.exceptions.WrongUserTypeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,8 +17,8 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-    @ExceptionHandler(ManagerException.class)
-    public String handException(ManagerException exception) {
+    @ExceptionHandler(WrongUserTypeException.class)
+    public String handException(WrongUserTypeException exception) {
         return "got an 404 error with: " + exception.getMessage();
     }
 }
