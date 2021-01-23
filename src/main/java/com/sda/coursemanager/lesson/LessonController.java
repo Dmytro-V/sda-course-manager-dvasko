@@ -8,7 +8,10 @@ import com.sda.coursemanager.lesson.model.dto.LessonBlockUpdateForm;
 import com.sda.coursemanager.user.UserRepository;
 import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -31,7 +34,9 @@ public class LessonController {
 
     @PutMapping("/lesson-blocks/{id}")
     public LessonBlockDto setTeacher(@PathVariable("id") Long id,
-                                     @RequestBody LessonBlockUpdateForm lessonBlockUpdateForm) throws NotFoundException, WrongUserTypeException {
+                                     @Valid @RequestBody LessonBlockUpdateForm lessonBlockUpdateForm)
+            throws NotFoundException, WrongUserTypeException {
+
         LessonBlock lessonBlock = lessonBlockRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("lesson block not found"));
 
