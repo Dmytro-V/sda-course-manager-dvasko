@@ -13,24 +13,17 @@ export class CourseService {
   }
 
   public findAll(): Observable<Course[]> {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<Course[]>('/api/courses/', {headers: headers});
+    return this.http.get<Course[]>('/api/courses/');
   }
 
   findById(id: number): Observable<CourseDetails>{
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<CourseDetails>('/api/courses/' + id + '/details', {headers: headers});
+    return this.http.get<CourseDetails>('/api/courses/' + id + '/details');
   }
 
   assignParticipant(courseId: number, participantId: number) {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
-
     let body = {courseId:courseId, participantId: participantId};
-    this.http.post('/api/enrollments/', body, {headers: headers}).subscribe();
+    this.http.post('/api/enrollments/', body).subscribe();
   }
 }

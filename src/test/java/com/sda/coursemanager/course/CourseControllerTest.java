@@ -2,12 +2,10 @@ package com.sda.coursemanager.course;
 
 import com.sda.coursemanager.course.model.Course;
 import com.sda.coursemanager.course.model.CourseEnrollment;
-import com.sda.coursemanager.course.model.dto.CourseEnrollmentDto;
 import com.sda.coursemanager.course.model.dto.EnrollmentsForm;
 import com.sda.coursemanager.exceptions.EnrollmentCreateException;
 import com.sda.coursemanager.exceptions.NotFoundException;
 import com.sda.coursemanager.exceptions.WrongUserTypeException;
-import com.sda.coursemanager.lesson.model.LessonBlock;
 import com.sda.coursemanager.user.UserRepository;
 import com.sda.coursemanager.user.model.Role;
 import com.sda.coursemanager.user.model.User;

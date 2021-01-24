@@ -11,31 +11,23 @@ export class UserService {
   }
 
   public findAll(): Observable<User[]> {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<User[]>('/api/users/', {headers: headers});
+    return this.http.get<User[]>('/api/users/');
   }
 
 
   findById(id: number): Observable<UserDetails>{
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<UserDetails>('/api/users/' + id, {headers: headers});
+    return this.http.get<UserDetails>('/api/users/' + id);
   }
 
   findAllTeachers(): Observable<User[]> {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<User[]>('/api/users/'+'?type=TEACHER', {headers: headers});
+    return this.http.get<User[]>('/api/users/'+'?type=TEACHER');
   }
 
   findAllParticipants(): Observable<User[]> {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', 'Basic ' + btoa('admin:admin'));
 
-    return this.http.get<User[]>('/api/users/'+'?type=PARTICIPANT', {headers: headers});
+    return this.http.get<User[]>('/api/users/'+'?type=PARTICIPANT');
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import {BrowserModule} from "@angular/platform-browser";
@@ -12,6 +12,7 @@ import { CourseComponent } from './courses/course/course.component';
 import { AssignTeacherFormComponent } from './courses/assign-teacher-form/assign-teacher-form.component';
 import { CourseEnrollmentFormComponent } from './courses/course-enrollment-form/course-enrollment-form.component';
 import { EnrollmentsListComponent } from './course-enrollments/enrollments-list/enrollments-list.component';
+import {AuthInterceptor} from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,12 @@ import { EnrollmentsListComponent } from './course-enrollments/enrollments-list/
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+    UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
